@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ResourceList from './ResourceList';
+import UserList from './UserList';
 
 const App = () => {
   const [resource, setResource] = useState('posts');
@@ -19,8 +20,18 @@ const App = () => {
         >
           Todos
         </button>
+        <button
+          className='ui inverted green button'
+          onClick={() => setResource('users')}
+        >
+          Users
+        </button>
       </div>
-      <ResourceList resource={resource} />
+      {resource === 'users' ? (
+        <UserList resource={resource} />
+      ) : (
+        <ResourceList resource={resource} />
+      )}
     </div>
   );
 };
